@@ -1,68 +1,88 @@
 .custom__card {
     background-color: var(--card-color);
-    border-radius: 3px;
-    box-shadow: 0px 2px var(--card-box-shadow);
-    margin-inline: auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px var(--card-box-shadow);
     padding-inline: 0.5rem;
     padding-bottom: 0.4rem;
-    /* cursor: grab; */
     color: var(--text-color);
     margin-bottom: 10px;
-    /* position: relative; */
-  }
-  .card__tags {
-    display: flex;
-    column-gap: 5px;
-    row-gap: 5px;
-    flex-wrap: wrap;
-    align-self: flex-start;
   }
   
   .card__text {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: gray;
   }
-  
-  .car__more {
-    opacity: 0.5;
-    cursor: pointer;
+
+  .card__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
   }
-  .car__more:hover {
-    opacity: 1;
-    cursor: pointer;
-    transition: ease-in 100ms;
-  }
-  .card__dropdown {
-    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12);
-    cursor: default;
-  }
-  .card__dropdown > p {
-    border-bottom: 1px solid #f8f8f8;
-    cursor: pointer;
-  }
-  
-  .card__footer {
-    margin-top: 8px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .card__footer > div > svg {
-    height: 15px;
-    width: 15px;
-    color: rgb(116, 116, 116);
-    cursor: pointer;
-  }
-  
-  .card__footer div {
+  .card__tags{
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    width: fit-content;
+    border-radius: 8px;
+    margin-right: 0.5rem; 
+    padding: 0.5rem 0.3rem;
+    font-size: 14px;
+    color: gray;
+    border: 0.3px solid gray;   
   }
-  
-  .card__footer span {
-    font-size: 12px;
-    color: rgb(116, 116, 116);
-    margin-inline: 2px;
-    font-weight: 500;
+
+  .card__circle{
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: gray;
+    margin-right: 0.3rem;
   }
-  
+  .card__not{
+    display: flex;
+    color: gray;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .card__noti{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2px;
+    border: 0.3px solid gray; 
+    width: fit-content;
+    border-radius: 8px;
+    margin-right: 0.5rem; 
+  }
+  .card__img{
+    width: 35px;
+    height: 35px;
+  }
+  .card__status {
+    width:10px;
+    height:10px;
+    border:2px solid white;
+    position:absolute;
+    bottom:2%;
+    right:2%;
+    border-radius:100%;
+  }
+  .card__avatar {
+    position:relative;
+    display:inline-block;
+  }
+
+
+
+/* Icons */
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

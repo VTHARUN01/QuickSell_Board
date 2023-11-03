@@ -2,19 +2,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 290px;
+    width: 400px;
     word-wrap: break-word;
-    background-color: var(--board-color);
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
     height: 100%;
     max-height: 82vh;
     color: var(--text-color);
-  }
-  .board__footer {
-    display: flex;
-    flex-direction: column;
   }
   .board__cards {
     padding: 0.5rem 0.5rem;
@@ -26,22 +20,9 @@
     justify-content: space-between;
     padding-inline: 0.5rem;
     margin-bottom: 0;
+   
   }
-  .board__dropdown {
-    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12);
-    cursor: default;
-  }
-  .board__dropdown > p {
-    border-bottom: 1px solid var(--drop-down-color);
-    cursor: pointer;
-  }
-  .board__top > div > p:hover {
-    cursor: pointer;
-  }
-  .emoji {
-    margin-inline-end: 0.5rem;
-  }
-  
+ 
   .board__top > div > p {
     font-weight: bolder;
   }
@@ -53,16 +34,17 @@
     background-color: var(--card-color);
     margin-inline: 10px;
   }
-  .title__input {
+  .board__number{
+    margin-left: 0.5rem;
     font-weight: 400;
-    /* padding-inline: 0.5rem; */
-    height: 30px;
-    border-radius: 5px;
+    color: gray;
   }
-  .board__top > div {
-    cursor: pointer;
+
+  /* Icons */
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
   }
-  
-  /* .board__top > input {
-  } */
-  

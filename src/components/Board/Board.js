@@ -6,10 +6,18 @@ import "./Board.css";
 
 export default function Board({ status, user, board, index: id, data }) {
   return (
-    <div className="board">
+    <div className="board" key={id}>
       <div className="board__top">
         <div>
-          <p className="board__title">{board || "Name of Board"}</p>
+          <p className="board__title">
+            {board || "Name of Board"}
+            <span className="board__number">{user ? data[board]?.tickets?.length : ""}</span>
+            <span className="board__number">{status ? data[board]?.length : ""}</span>
+          </p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined">add</span>
+          <span class="material-symbols-outlined">more_horiz</span>
         </div>
       </div>
       <Droppable droppableId={board}>
@@ -21,7 +29,7 @@ export default function Board({ status, user, board, index: id, data }) {
           >
             {user ? (
               <>
-                {data[board]?.tickets.map((ticket, index) => {
+                {data[board]?.tickets?.map((ticket, index) => {
                   const userIdx = ticket.id;
                   const idx = userIdx.split("-")[1];
                   return (
@@ -42,13 +50,13 @@ export default function Board({ status, user, board, index: id, data }) {
             {status ? (
               <>
                 {data[board]?.map((ticket, index) => {
-                  const userIdx = ticket[0].id;
+                  const userIdx = ticket.id;
                   const idx = userIdx.split("-")[1];
 
                   return (
                     <Card
                       index={index}
-                      ticket={ticket[0]}
+                      ticket={ticket}
                       status={status}
                       user={user}
                       idx={idx}

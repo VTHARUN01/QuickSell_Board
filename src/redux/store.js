@@ -1,5 +1,7 @@
 import ticketSlice from "./slice/ticketSlice";
 import userSlice from "./slice/userSlice";
+import dataSlice from "./slice/dataSlice";
+import boardSlice from "./slice/boardSlice";
 
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -23,6 +25,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   tickets: ticketSlice,
   users: userSlice,
+  data: dataSlice,
+  board: boardSlice,
 });
 
 const store = configureStore({
