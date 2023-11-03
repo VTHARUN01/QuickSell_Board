@@ -1,14 +1,20 @@
 import React from "react";
-import QuiclLogo from "../../assets/Quicksell.jpeg";
 import Dropdown from "react-dropdown";
+
 import "react-dropdown/style.css";
 import "./Navbar.css";
+
 const NavBar = ({ setGrp, setStatus, setPriority, setUser, grp }) => {
   return (
     <div className="Navbar">
       <a href="https://quicksell.co/">
-        <img src={QuiclLogo} alt="logo" className="Navbar__img" />
+        <img
+          src={"https://dwtqm09zovi8z.cloudfront.net/assets/powered_by.png"}
+          alt="logo"
+          className="Navbar__img"
+        />
       </a>
+
       <div className="Navbar__filter">
         <Dropdown
           options={["Status", "User", "Priority"]}

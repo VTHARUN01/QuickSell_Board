@@ -16,6 +16,7 @@ export default function Board({
   grp,
 }) {
   const [cardList, setCardList] = React.useState([]);
+
   useEffect(() => {
     if (user) {
       setCardList(data[board]?.tickets);
@@ -24,8 +25,9 @@ export default function Board({
     } else if (priority) {
       setCardList(data[board]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, user, priority, tickets, users, data, grp]);
-  console.log(cardList);
+
   return (
     <div className="board" key={id}>
       <div className="board__top">
