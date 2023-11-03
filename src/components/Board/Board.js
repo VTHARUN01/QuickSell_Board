@@ -25,6 +25,7 @@ export default function Board({
       setCardList(data[board]);
     }
   }, [status, user, priority, tickets, users, data, grp]);
+  console.log(cardList);
   return (
     <div className="board" key={id}>
       <div className="board__top">
@@ -58,6 +59,7 @@ export default function Board({
                   status={status}
                   user={user}
                   idx={idx}
+                  users={users}
                 />
               );
             })}

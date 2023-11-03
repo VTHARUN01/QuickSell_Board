@@ -3,9 +3,12 @@ import { Draggable } from "react-beautiful-dnd";
 import { AvatarGenerator } from "random-avatar-generator";
 import "./Card.css";
 
-const Card = ({ index, ticket, idx }) => {
+const Card = ({ index, ticket, idx, users }) => {
   const generator = new AvatarGenerator();
   const [imgUrl] = useState(generator.generateRandomAvatar(ticket.id));
+  const [available] = useState(
+    users.filter((user) => user.id === ticket.userId)[0].available
+  );
   return (
     <Draggable key={idx} draggableId={idx} index={index}>
       {(provided) => (
@@ -21,7 +24,7 @@ const Card = ({ index, ticket, idx }) => {
               <img className="card__img" src={imgUrl} alt="avatar" />
               <span
                 className="card__status"
-                style={{ background: Math.random() > 0.5 ? "#99CC00" : "gray" }}
+                style={{ background: available ? "#99CC00" : "gray" }}
               ></span>
             </div>
           </div>

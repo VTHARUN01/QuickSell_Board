@@ -8,6 +8,7 @@ import { updateData } from "./redux/slice/dataSlice";
 import NavBar from "./components/NavBar/NavBar";
 import Board from "./components/Board/Board";
 import { sortPri, sortNam } from "./js/sortIng";
+
 import "./css/App.css";
 
 function App() {
@@ -47,7 +48,8 @@ function App() {
     if (source.droppableId === destination.droppableId) return;
 
     if (user) {
-      let newData = data;
+      let newData = {};
+      Object.assign(newData, data);
       let newTickets = tickets?.length > 0 ? [...tickets] : [];
       // add to destination
       let addIdx =
@@ -61,7 +63,7 @@ function App() {
         if (
           newTicket.id === newData[source.droppableId].tickets[source.index].id
         ) {
-          newTicket.userId = destination.droppableId;
+          newTicket.userId = newData[destination.droppableId]?.id;
         }
         return newTicket;
       });
@@ -72,19 +74,22 @@ function App() {
       else addIdx.sort(sortNam);
 
       let newBoardIdx = { ...newData[destination.droppableId] };
-      let newBoardTic = [...newData[destination.droppableId].tickets];
-      newBoardTic = addIdx;
-      newBoardIdx.tickets = newBoardTic;
+      newBoardIdx.tickets = addIdx;
       newData[destination.droppableId] = newBoardIdx;
 
       // remove from source
       let removeIdx = [...newData[source.droppableId].tickets];
-      removeIdx.splice(source.index, 1);
+      removeIdx = removeIdx.filter((ticket) => ticket.id !== newAddIdx.id);
       //sorting
       if (grp) removeIdx.sort(sortPri);
       else removeIdx.sort(sortNam);
-      newData[source.droppableId].tickets = removeIdx;
+
+      let newBoardId = { ...newData[source.droppableId] };
+      newBoardId.tickets = removeIdx;
+      newData[source.droppableId] = newBoardId;
       //updateData
+      console.log(newData);
+      console.log(newTickets);
       dispatch(InitalizeTickets(newTickets));
       dispatch(updateData(newData));
     }
@@ -111,6 +116,7 @@ function App() {
       //sorting
       if (grp) addIdx.sort(sortPri);
       else addIdx.sort(sortNam);
+
       newData[destination.droppableId] = addIdx;
       // remove from source
       let removeIdx = [...newData[source.droppableId]];
@@ -118,6 +124,7 @@ function App() {
       //sorting
       if (grp) removeIdx.sort(sortPri);
       else removeIdx.sort(sortNam);
+
       newData[source.droppableId] = removeIdx;
       //updateData
       dispatch(InitalizeTickets(newTickets));
@@ -294,7 +301,6 @@ function App() {
           if (!newBoard.includes(user.name)) {
             newBoard.push(user.name);
             newBoard.sort();
-
             const newTic = tickets.filter(
               (ticket, index) => ticket.userId === userIdx
             );
@@ -305,6 +311,7 @@ function App() {
             };
           }
         });
+        console.log(newData);
         if (uboard.length === 0) {
           setUBoard(newBoard);
           dispatch(updateBoard(newBoard));
