@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export const boardSlice = createSlice({
-  name: "data",
+  name: "board",
   initialState,
   reducers: {
     updateBoard: (state, action) => {

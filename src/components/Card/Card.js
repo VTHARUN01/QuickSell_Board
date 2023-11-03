@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { AvatarGenerator } from "random-avatar-generator";
 import "./Card.css";
 
-const Card = ({ index, ticket, status, user, idx }) => {
+const Card = ({ index, ticket, idx }) => {
   const generator = new AvatarGenerator();
   const [imgUrl] = useState(generator.generateRandomAvatar(ticket.id));
   return (

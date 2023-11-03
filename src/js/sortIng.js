@@ -1,5 +1,14 @@
+
 const sortPri = (a, b) => {
   return b.priority - a.priority;
 };
 
-export { sortPri };
+const sortNam = (a, b) => {
+
+  if (a.title < b.title) {
+    return -1;
+  }
+  return 1;
+};
+
+export { sortPri, sortNam };

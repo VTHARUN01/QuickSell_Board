@@ -1,18 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Droppable } from "react-beautiful-dnd";
 
 import Card from "../Card/Card";
 import "./Board.css";
-
-export default function Board({ status, user, board, index: id, data }) {
+const priorityList = ["No priority", "Low", "Medium", "High", "Urgent"];
+export default function Board({
+  status,
+  user,
+  board,
+  index: id,
+  data,
+  priority,
+  tickets,
+  users,
+  grp,
+}) {
+  const [cardList, setCardList] = React.useState([]);
+  useEffect(() => {
+    if (user) {
+      setCardList(data[board]?.tickets);
+    } else if (status) {
+      setCardList(data[board]);
+    } else if (priority) {
+      setCardList(data[board]);
+    }
+  }, [status, user, priority, tickets, users, data, grp]);
   return (
     <div className="board" key={id}>
       <div className="board__top">
         <div>
           <p className="board__title">
-            {board || "Name of Board"}
-            <span className="board__number">{user ? data[board]?.tickets?.length : ""}</span>
-            <span className="board__number">{status ? data[board]?.length : ""}</span>
+            {status || user ? board : priorityList[board]}
+            <span className="board__number">
+              {cardList?.length > 0 ? cardList.length : 0}
+            </span>
           </p>
         </div>
         <div>
@@ -27,46 +48,19 @@ export default function Board({ status, user, board, index: id, data }) {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {user ? (
-              <>
-                {data[board]?.tickets?.map((ticket, index) => {
-                  const userIdx = ticket.id;
-                  const idx = userIdx.split("-")[1];
-                  return (
-                    <Card
-                      index={index}
-                      ticket={ticket}
-                      status={status}
-                      user={user}
-                      idx={idx}
-                    />
-                  );
-                })}
-              </>
-            ) : (
-              <div></div>
-            )}
-
-            {status ? (
-              <>
-                {data[board]?.map((ticket, index) => {
-                  const userIdx = ticket.id;
-                  const idx = userIdx.split("-")[1];
-
-                  return (
-                    <Card
-                      index={index}
-                      ticket={ticket}
-                      status={status}
-                      user={user}
-                      idx={idx}
-                    />
-                  );
-                })}
-              </>
-            ) : (
-              <div></div>
-            )}
+            {cardList?.map((ticket, index) => {
+              const userIdx = ticket.id;
+              const idx = userIdx.split("-")[1];
+              return (
+                <Card
+                  index={index}
+                  ticket={ticket}
+                  status={status}
+                  user={user}
+                  idx={idx}
+                />
+              );
+            })}
             {provided.placeholder}
           </div>
         )}
