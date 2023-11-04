@@ -40,6 +40,7 @@ const updatePriorityStatus = (
   if (status) {
     if (sboard.length === 0) {
       setSBoard(newBoard);
+      localStorage.setItem("sboard", JSON.stringify(newBoard));
       dispatch(updateBoard(newBoard));
     } else {
       dispatch(updateBoard(sboard));
@@ -47,6 +48,7 @@ const updatePriorityStatus = (
   } else {
     if (pboard.length === 0) {
       setPBoard(newBoard);
+      localStorage.setItem("pboard", JSON.stringify(newBoard));
       dispatch(updateBoard(newBoard));
     } else {
       dispatch(updateBoard(pboard));
@@ -73,9 +75,7 @@ const updateUser = (
     if (!newBoard.includes(user.name)) {
       newBoard.push(user.name);
       newBoard.sort();
-      const newTic = tickets.filter(
-        (ticket) => ticket.userId === userIdx
-      );
+      const newTic = tickets.filter((ticket) => ticket.userId === userIdx);
       newTic.sort(grp ? sortPri : sortNam);
       newData[user.name] = {
         ...user,
@@ -85,6 +85,7 @@ const updateUser = (
   });
   if (uboard.length === 0) {
     setUBoard(newBoard);
+    localStorage.setItem("uboard", JSON.stringify(newBoard));
     dispatch(updateBoard(newBoard));
   } else {
     dispatch(updateBoard(uboard));
@@ -92,4 +93,4 @@ const updateUser = (
   dispatch(updateData(newData));
 };
 
-export { updatePriorityStatus,updateUser };
+export { updatePriorityStatus, updateUser };

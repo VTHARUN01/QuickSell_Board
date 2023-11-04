@@ -42,16 +42,27 @@ function App() {
   const [grp, setGrp] = useState(true);
 
   //board
-  const [sboard, setSBoard] = useState([]);
-  const [uboard, setUBoard] = useState([]);
-  const [pboard, setPBoard] = useState([]);
+  const [sboard, setSBoard] = useState(
+    localStorage.getItem("sboard")
+      ? JSON.parse(localStorage.getItem("sboard"))
+      : []
+  );
+  const [uboard, setUBoard] = useState(
+    localStorage.getItem("uboard")
+      ? JSON.parse(localStorage.getItem("uboard"))
+      : []
+  );
+  const [pboard, setPBoard] = useState(
+    localStorage.getItem("pboard")
+      ? JSON.parse(localStorage.getItem("pboard"))
+      : []
+  );
 
   // Drag and Drop
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination) return;
     if (source.droppableId === destination.droppableId) return;
-
     if (user) {
       updateReduxUser(
         source,

@@ -35,7 +35,18 @@ const initalizePriorityStatus = (
       ].sort(grp ? sortPri : sortNam);
     }
   });
-  status ? setSBoard(newBoard) : setPBoard(newBoard);
+  if (status) {
+    if (!localStorage.getItem("sboard")) {
+      setSBoard(newBoard);
+      localStorage.setItem("sboard", JSON.stringify(newBoard));
+    }
+  } else {
+    if (!localStorage.getItem("pboard")) {
+      setPBoard(newBoard);
+      localStorage.setItem("pboard", JSON.stringify(newBoard));
+    }
+  }
+
   dispatch(updateBoard(newBoard));
   dispatch(updateData(newData));
 };
@@ -58,9 +69,7 @@ const initalizeUser = (
       newBoard.push(user.name);
       newBoard.sort();
 
-      const newTic = tickets.filter(
-        (ticket) => ticket.userId === userIdx
-      );
+      const newTic = tickets.filter((ticket) => ticket.userId === userIdx);
       newTic.sort(grp ? sortPri : sortNam);
       newData[user.name] = {
         ...user,
@@ -68,7 +77,10 @@ const initalizeUser = (
       };
     }
   });
-  setUBoard(newBoard);
+  if (!localStorage.getItem("uboard")) {
+    setUBoard(newBoard);
+    localStorage.setItem("uboard", JSON.stringify(newBoard));
+  }
   dispatch(updateBoard(newBoard));
   dispatch(updateData(newData));
 };
