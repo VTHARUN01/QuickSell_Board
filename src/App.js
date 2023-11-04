@@ -25,7 +25,9 @@ function App() {
 
   // Fetch data from API
   const getData = async () => {
-    const response = await fetch(process.env.REACT_APP_URL);
+    const response = await fetch(
+      "https://api.quicksell.co/v1/internal/frontend-assignment"
+    );
     const data = await response.json();
     dispatch(InitalizeTickets(data.tickets));
     dispatch(InitalizeUsers(data.users));
