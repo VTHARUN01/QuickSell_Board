@@ -16,7 +16,7 @@ const initalizePriorityStatus = (
   tickets.forEach((ticket) => {
     const userIdx = ticket.userId;
     const idx = userIdx.split("-")[1];
-    if (!newBoard.includes(ticket.status)) {
+    if (!newBoard.includes(status ? ticket.status : ticket.priority)) {
       newBoard.push(status ? ticket.status : ticket.priority);
       if (!status) newBoard.sort((a, b) => b - a);
       newData[status ? ticket.status : ticket.priority] = [
@@ -59,7 +59,7 @@ const initalizeUser = (
       newBoard.sort();
 
       const newTic = tickets.filter(
-        (ticket, index) => ticket.userId === userIdx
+        (ticket) => ticket.userId === userIdx
       );
       newTic.sort(grp ? sortPri : sortNam);
       newData[user.name] = {

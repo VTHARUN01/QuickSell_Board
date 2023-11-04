@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { AvatarGenerator } from "random-avatar-generator";
+import Anuroop from "../../assets/Anuroop.jpeg";
+import Ramesh from "../../assets/Ramesh.jpeg";
+import Suresh from "../../assets/Suresh.jpeg";
+import Shankar from "../../assets/shankar.jpeg";
+import Yogesh from "../../assets/yogesh.jpg";
+
 import "./Card.css";
 
+const imagUrl = [Anuroop, Yogesh, Shankar, Ramesh, Suresh];
 const Card = ({ index, ticket, idx, users }) => {
-  const generator = new AvatarGenerator();
-  const [imgUrl] = useState(generator.generateRandomAvatar(ticket.id));
-  const [available] = useState(
-    users.filter((user) => user.id === ticket.userId)[0].available
-  );
   return (
     <Draggable key={idx} draggableId={idx} index={index}>
       {(provided) => (
@@ -21,10 +22,19 @@ const Card = ({ index, ticket, idx, users }) => {
           <div className="card__text">
             <p>{ticket.id}</p>
             <div className="card__avatar">
-              <img className="card__img" src={imgUrl} alt="avatar" />
+              <img
+                className="card__img"
+                src={imagUrl[ticket.userId[ticket.userId.length - 1] - 1]}
+                alt="avatar"
+              />
               <span
                 className="card__status"
-                style={{ background: available ? "#99CC00" : "gray" }}
+                style={{
+                  background: users[ticket.userId[ticket.userId.length - 1] - 1]
+                    .available
+                    ? "#99CC00"
+                    : "gray",
+                }}
               ></span>
             </div>
           </div>

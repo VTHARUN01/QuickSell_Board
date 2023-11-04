@@ -7,19 +7,50 @@
     align-items: center;
 
 }
-
 .Navbar__img{
     height: 48px;
     margin-right: 1em;
 }
-
 .Navbar__filter{
-    display: flex;
-    align-items: center;    
+    height: 100px;
+    padding: 0.5em;
 }
-
+.Navbar__drp{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .Navbar__filter__dropdown{
-    margin-right: 1em;
-    box-shadow: 0px 0px 10px #1c5a2d;
     width: 150px;
+    align-items: center;   
+    background-color: white;
+    padding: 0.5em;
+ }
+.Navbar__filter__heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    color:gray;
+}
+.Navbar__Display{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 16px;
+    box-shadow: 0px 0px 3px white;
+}
+.Dropdown-control{
+    border-radius: 8px;
+}
+.Dropdown-menu{
+    border-radius: 8px;
+   width: 150px;
+}
+.popup-content {
+    border-radius: 8px;
+    width: fit-content;
+    padding: 0.5em;
+    box-shadow: 0px 0px 3px white;
 }

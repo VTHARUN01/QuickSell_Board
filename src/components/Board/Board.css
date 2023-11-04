@@ -3,12 +3,9 @@
     display: flex;
     flex-direction: column;
     width: 400px;
-    word-wrap: break-word;
-    background-clip: border-box;
     border-radius: 0.25rem;
     height: 100%;
     max-height: 82vh;
-    color: var(--text-color);
   }
   .board__cards {
     padding: 0.5rem 0.5rem;
@@ -21,19 +18,8 @@
     justify-content: space-between;
     padding-inline: 0.5rem;
     margin-bottom: 0;
-   
-  }
- 
-  .board__top > div > p {
     font-weight: bolder;
-  }
-  .total__cards {
-    font-size: 12px;
-    border-radius: 15px 15px 15px 15px;
-    padding-inline: 0.6rem;
-    border: 0.5px solid var(--card-box-shadow);
-    background-color: var(--card-color);
-    margin-inline: 10px;
+   
   }
   .board__number{
     margin-left: 0.5rem;

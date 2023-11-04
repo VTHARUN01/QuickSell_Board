@@ -27,7 +27,6 @@ export default function Board({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, user, priority, tickets, users, data, grp]);
-
   return (
     <div className="board" key={id}>
       <div className="board__top">

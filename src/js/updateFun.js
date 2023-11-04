@@ -18,18 +18,18 @@ const updatePriorityStatus = (
   tickets.forEach((ticket) => {
     const userIdx = ticket.userId;
     const idx = userIdx.split("-")[1];
-    if (!newBoard.includes(status ? ticket.status : ticket.pritority)) {
-      newBoard.push(status ? ticket.status : ticket.pritority);
+    if (!newBoard.includes(status ? ticket.status : ticket.priority)) {
+      newBoard.push(status ? ticket.status : ticket.priority);
       if (!status) newBoard.sort((a, b) => b - a);
-      newData[status ? ticket.status : ticket.pritority] = [
+      newData[status ? ticket.status : ticket.priority] = [
         {
           ...ticket,
           user: users[idx],
         },
       ];
     } else {
-      newData[status ? ticket.status : ticket.pritority] = [
-        ...newData[status ? ticket.status : ticket.pritority],
+      newData[status ? ticket.status : ticket.priority] = [
+        ...newData[status ? ticket.status : ticket.priority],
         {
           ...ticket,
           user: users[idx],

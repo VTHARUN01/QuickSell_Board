@@ -11,7 +11,7 @@ import Board from "./components/Board/Board";
 import { updateReduxPriorityStatus, updateReduxUser } from "./js/reduxFun";
 import { initalizePriorityStatus, initalizeUser } from "./js/initalizeFun";
 import { updatePriorityStatus, updateUser } from "./js/updateFun";
-import "./css/App.css";
+import "./App.css";
 
 function App() {
   // Dispatch
@@ -199,8 +199,8 @@ function App() {
           setUser={setUser}
           grp={grp}
         />
-        <div className="app_outer">
-          <div className="app_boards">
+        <div className="Quicksell__outer">
+          <div className="Quicksell__boards">
             {boards.map((board, index) => (
               <Board
                 status={status}
