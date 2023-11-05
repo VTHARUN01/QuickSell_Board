@@ -9,6 +9,13 @@ import Yogesh from "../../assets/yogesh.jpg";
 import "./Card.css";
 
 const imagUrl = [Anuroop, Yogesh, Shankar, Ramesh, Suresh];
+let avatar = [
+  "more_horiz",
+  "signal_cellular_1_bar",
+  "signal_cellular_3_bar",
+  "signal_cellular_4_bar",
+  "campaign",
+];
 const Card = ({ index, ticket, idx, users }) => {
   return (
     <Draggable key={idx} draggableId={idx} index={index}>
@@ -41,12 +48,11 @@ const Card = ({ index, ticket, idx, users }) => {
           <div className="card__title">{ticket.title}</div>
           <div className="card__not">
             <p className="card__noti">
-              {ticket.tag.length ? (
-                <span class="material-symbols-outlined">priority_high</span>
-              ) : (
-                ""
-              )}
+              <span class="material-symbols-outlined">
+                {avatar[ticket.priority]}
+              </span>
             </p>
+
             {ticket.tag.map((tag, index) => (
               <p className="card__tags" key={index}>
                 <span className="card__circle"></span>
